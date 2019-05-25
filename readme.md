@@ -1,72 +1,86 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## About Tuku
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+图库系统是盟招网编辑用图系统，主要致力于完善SEO人员与编辑人员配合理念而成！主要功能如下：
 
-## About Laravel
+- 由SEO人员后台统一传图片到服务器
+- 编辑人员可在前台搜索条件【类别】和【数量】从而获取相应的图片
+- 获取的图片都会显示宽、高、大小！每张图片都有自己的生命周期（即推荐次数）
+- 向编辑人员推荐的图片是以 搜索条件+最低推荐次数 获取的
+- 编辑人员获取后可选择 【一键打包下载】
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+以上为本系统的基本功能;
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center"><img src="readmeImg/1.png"></p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 后台基本功能
 
-## Learning Laravel
+后台系统基于Laravel-admin开发而成
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+tuku后台主要包含如下功能：
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- ###### <a href="http://tuku.local/admin">首页（统计）</a>
 
-## Laravel Sponsors
+  - 注册人员（跳转用户管理）、图片库总数（跳转图片库）、获取图片总数、今日获取图片数（跳转编辑日志）
+  - 统计表：近7日获取总量图（柱状图）、编辑人员每日获取图（饼状图）
+  - 使用说明、近期更新说明
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- ###### 用户管理
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+  - 前端注册用户列表
+  - 验证邮箱时间（可编辑）如为空即没有验证邮箱
+  - 点击用户名可查看近10次的编辑日志
 
-## Contributing
+- ###### 编辑日志
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  - 前台获取图片的列表（获取了哪些图片、类别、时间、IP地址、总数）以及备注（可编辑）
+  - 筛选功能：时间、栏目、备注、编辑人
+  - 注：如需获取本日某位编辑人的获取量，可结合筛选与底部统计获取
+    1. 选择时间 开始时间为今日-结束时间为明日
+    2. 选择编辑人 点击筛选
+    3. 在 SUM 列底部即可看到 该编辑人员近日获取图片总量
 
-## Security Vulnerabilities
+- ###### 分类管理
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+  - 无限极分类：包含了名称、描述、排序等功能
+  - 流程：右侧添加表单，提交后在左侧显示！后点击左侧的保存完成
+  - 技巧：左侧类别列表可拖拽排序
+
+- ###### 图片库（图片管理）
+
+  - 包含功能：图片的增删改、批量上传（也可拖拽上传）、批量删除
+  - 技巧：后台的右上角的➕是图片库的新增快捷键，小房子是返回前台快捷键！列表图片可点击放大
+  - id、图片大小、推荐次数、初始推荐次数 均可点击排序
+  - 表格右上角的蓝黑色按钮可调节显示列的选择
+
+- ###### 系统管理（laravel-admin自带）
+
+  - 具体操作查看 laravel-admin 文档
+
+- 注释：后台用户可点击右上角头像中的设置更换自定义头像、更改名称和密码！
+
+<p align="center"><img src="readmeImg/2.png"></p>
+
+## 前端基本功能
+
+前端主要给编辑人员提供方便的图片获取及下载功能；
+
+为安全和便于统计，前台设置了诸多限制：
+
+- 前端用户需注册账号，并登陆切验证邮箱后才可获取图片（便于供后台查看获取的编辑日志信息）
+- 前端用户获取图片需选择类别栏目以及填写需要的图片数
+- 为防止恶意刷取图片的生命周期（推荐次数）每次获取图片均有间隔5分钟
+  - 间隔期间刷新网页获取图片不变，且时间不会重新计时
+
+为方便前端用户，本系统提供一键打包下载功能
+
+- 当搜索完成并获取图片后，即会显示一件下载
+- 点击一键下载系统会打包成zip文件并重命名图片（md5）
+- 注：如点击一键下载无反应，乃是浏览器问题！请更换更高版本的浏览器
+
+## 安全漏洞
+
+如果您发现本系统中存在安全漏洞，请发送电子邮件至[646460179@qq.com]（mailto：646460179@qq.com）给jianyue1024。所有安全漏洞都将得到及时解决。
 
 ## License
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
