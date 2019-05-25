@@ -12,9 +12,6 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Widgets\Box;
 use Encore\Admin\Widgets\InfoBox;
 use Illuminate\Support\Facades\DB;
-use Encore\Admin\Widgets\Collapse;
-use Encore\Admin\Widgets\Table;
-
 
 
 class HomeController extends Controller
@@ -83,12 +80,39 @@ class HomeController extends Controller
                     $column->append(new Box('editor获取图', view('admin.chartjs2',['a' => $a,'b' => $b])));
                 });
                 $row->column(4, function (Column $column) {
-                    $collapse = new Collapse();
 
-                    $collapse->add('使用说明', 'xxxxx');
-                    $collapse->add('更新文档', new Table());
+                    $content1 = "技巧：<br/>
+                    <p>怎么查看某位编辑某天的获取总量？<br/>
+                    在编辑日志界面点击筛选选择日志和编辑人，可在表格底部查看统计数；</p>
+                    <p>栏目分类改排序太麻烦？不存在！<br/>
+                    在栏目分类界面左侧可直接拖拽分类名进行排序；</p>
+                    <p>前端用户注册邮箱没有收到邮件怎么办？<br/>
+                    在用户管理界面编辑邮箱验证时间，将注册时间复制到邮箱验证时间即可完成用户的验证；此方法不推荐使用，还是用自己邮箱好</p>
+                    1、图片新增中的批量上传可直接将图片拖入图片选择框中<br/>
+                    2、图片库中图片可点击放大查看<br/>
+                    3、后台管理员可自定义头像及重置密码<br/>
+                    <hr>
+                    <p>注意：因删除权限已放开，删除需谨慎，删除后无法恢复</p>
+                    ";
+                    $box = new Box('系统文档', $content1);
+                    $box->removable();
+                    $box->collapsable();
+                    $box->style('info');
 
-                    $column->append($collapse->render());
+                    $content2 = "
+                    新增功能：<br/>
+                    增加右上角➕图库新增快捷键！点击小房子按钮回前台；<br/>
+                    用户管理列表可点击用户名查看改用户近10次获取图片记录；<br/>
+                    编辑日志可自定义编辑备注；<br/>
+                    前端增加一键打包下载功能（图片名进行md5编译）
+                    ";
+                    $box2 = new Box('最近更新', $content2);
+                    $box2->removable();
+                    $box2->collapsable();
+                    $box2->style('success');
+
+                    $column->append($box->solid());
+                    $column->append($box2->solid());
                 });
 
             });
